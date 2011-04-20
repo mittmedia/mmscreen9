@@ -1,0 +1,75 @@
+@charset "utf-8";
+/* CSS Document */
+
+#picsearch{
+
+}
+
+/* Player */
+
+#picsearch #player-container{
+
+}
+#picsearch #player-container #picsearch_player{
+
+}
+#picsearch #player-container #player-meta{
+
+}
+#picsearch #player-container #player-meta div.heading{
+
+}
+#picsearch #player-container #player-meta p.description{
+
+}
+#picsearch #player-container #player-meta p.description span.category{
+
+}
+#picsearch #player-container #player-meta dl{
+
+}
+#picsearch #player-container #player-meta dl dt{
+
+}
+#picsearch #player-container #player-meta dl dd{
+
+}
+
+/* Categories */
+
+#picsearch #listings-container {
+
+}
+#picsearch #listings-container ul#category-tabs{
+
+}
+#picsearch #listings-container ul#category-tabs li{
+
+}
+#picsearch #listings-container #video-lists{
+
+}
+#picsearch #listings-container #video-lists #video-list{
+
+}
+#picsearch #listings-container #video-lists #video-list #video{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-thumbnail{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-description{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-description div.heading{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-description p.description{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-description span.category{
+
+}
+#picsearch #listings-container #video-lists #video-list #video #video-description p.length{
+
+}
