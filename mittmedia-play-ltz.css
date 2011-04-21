@@ -7,15 +7,10 @@
 	width: 100% !important;
 }
 
-.breadCrumbWrapper, #departmentHeadWrapper {
-	display: none !important;
-}
-
-
 /*----------------------*/
 
 #picsearch{
-	padding: 10px;
+	padding: 10px 0;
 	background-color:#FFF;
 	padding-top:10px;
 	font-family:Arial, Helvetica, sans-serif;
@@ -103,7 +98,7 @@
 #picsearch #listings-container ul#category-tabs{
 	display: block;
 	overflow: hidden;
-	border-bottom: 5px solid #039;
+	border-bottom: 5px solid #911803;
 	background-color: #F2F2F2;
 	margin-bottom: 10px;
 }
@@ -125,7 +120,7 @@
 	background-color: #e5e5e5;
 }
 #picsearch #listings-container ul#category-tabs li.current{
-	background-color: #039;
+	background-color: #D13B3B;
 	color: #fff;
 }
 #picsearch #listings-container #video-lists{
@@ -205,7 +200,7 @@ font-size:13px;
 }
 
 #picsearch #listings-container #pagination-container{
-	border-top: 5px solid #039;
+	border-top: 5px solid #911803;
 	display: block;
 	padding: 10px 0;
 	overflow: hidden;
@@ -223,7 +218,7 @@ font-size:13px;
 	padding: 0 10px;
 	height: 25px;
 	text-align: center;
-	background-color:#039;
+	background-color:#911803;
 	color: #fff;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -249,7 +244,7 @@ font-size:13px;
 	cursor: pointer;
 }
 #picsearch #listings-container #pagination-container ul#pagination li.page-no{
-	background-color: #039;
+	background-color: #911803;
 	color: #fff;
 	font-size: 14px;
 	display: none;

@@ -1,22 +1,17 @@
 @charset "utf-8";
 /* CSS Document */
 
-/* Op.se anpassning */
-
-.Cols-Main_Ad #AttentionTeaserWrapper{
-	width: 100% !important;
-}
-
-.breadCrumbWrapper, #departmentHeadWrapper {
-	display: none !important;
-}
+/* Heha anpassning */
 
 
 /*----------------------*/
 
 #picsearch{
+	width: 610px;
+	overflow: hidden;
 	padding: 10px;
-	background-color:#FFF;
+	background-color:#1d1d1d;
+	color: #f0f0f0;
 	padding-top:10px;
 	font-family:Arial, Helvetica, sans-serif;
 }
@@ -30,7 +25,7 @@
 
 }
 #picsearch #player-container #player-meta{
-	border-bottom: 1px solid #d7d7d7;
+
 }
 #picsearch #player-container #player-meta div.heading{
 	margin-top: 7px;
@@ -48,7 +43,7 @@
 #picsearch #player-container #player-meta dl{
 	display: block;
 	overflow: hidden;
-	background-color: #f5f5f5;
+	background-color: #000;
 	padding: 5px 10px;
 	font-size: 13px;
 }
@@ -64,12 +59,12 @@
 }
 #picsearch #player-container #player-meta dl dd.rating{
 	margin-top: -2px;
-	background-image: url(star.gif);
+	background-image: url(star.png);
 	background-repeat: repeat-x;
 	height: 18px;
 }
 #picsearch #player-container #player-meta dl dd.rating-0{
-	background-image: url(empty-star.gif);
+	background-image: url(empty-star.png);
 	width: 90px;
 }
 #picsearch #player-container #player-meta dl dd.rating-1{
@@ -103,16 +98,16 @@
 #picsearch #listings-container ul#category-tabs{
 	display: block;
 	overflow: hidden;
-	border-bottom: 5px solid #039;
-	background-color: #F2F2F2;
+	border-bottom: 5px solid #ff5302;
+	background-color: transparent;
 	margin-bottom: 10px;
 }
 #picsearch #listings-container ul#category-tabs li{
-	color: #000;
+	color: #F50;
 	
 	font-family:Arial, Helvetica, sans-serif;
 	text-transform: uppercase;
-	font-size: 12px;
+	font-size: 11px;
 	line-height: 2;
 	padding: 0 10px;
 	font-weight: bold;
@@ -122,10 +117,14 @@
 	cursor: pointer;
 }
 #picsearch #listings-container ul#category-tabs li:hover{
-	background-color: #e5e5e5;
+	background-color: #000;
+	color: #fff;
 }
 #picsearch #listings-container ul#category-tabs li.current{
-	background-color: #039;
+	background-image: url(http://helahalsingland.se/img/heha/button_searchString.png);
+	background-repeat: repeat-x;
+	background-position: 0 -8px;
+	background-color: #ff5302;
 	color: #fff;
 }
 #picsearch #listings-container #video-lists{
@@ -152,22 +151,22 @@
 	display: block;
 	overflow: hidden;
 	float: left;
-	width: 182px;
+	width: 196px;
 	height: 160px;
-	margin: 0 0 13px 13px;
+	margin: 0 0 10px 10px;
 	cursor: pointer;
 }
 #picsearch #listings-container #video-lists .video-list .pos-0{
 	margin-left: 0;
 }
 #picsearch #listings-container #video-lists .video-list .video:hover{
-	background-color:#fffff0;
+	background-color:#000;
 }
 #picsearch #listings-container #video-lists .video-list .video ul.attributes{
 	display: block;
 	overflow: hidden;
 	font-size: 11px;
-	color: #666;
+	color: #959595;
 	line-height: 1;
 	padding: 5px 0;
 }
@@ -182,12 +181,12 @@
 	text-align: right;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail{
-	width: 182px;
+	width: 196px;
 	height: 102px;
 	overflow: hidden;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail img{
-	width: 182px;
+	width: 196px;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-description{
 
@@ -205,7 +204,7 @@ font-size:13px;
 }
 
 #picsearch #listings-container #pagination-container{
-	border-top: 5px solid #039;
+	border-top: 5px solid #ff5302;
 	display: block;
 	padding: 10px 0;
 	overflow: hidden;
@@ -223,7 +222,7 @@ font-size:13px;
 	padding: 0 10px;
 	height: 25px;
 	text-align: center;
-	background-color:#039;
+	background-color:#ff5302;
 	color: #fff;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -235,11 +234,12 @@ font-size:13px;
 }
 
 #picsearch #listings-container #pagination-container ul#pagination li:hover{
-	background-color: #99DAF2;
+	color: #000;
 }
 
 #picsearch #listings-container #pagination-container ul#pagination li.disabled{
-	background-color: #eee;
+	background-color: #000;
+	color: #1d1d1d;
 }
 
 #picsearch #listings-container #pagination-container ul#pagination li.prev-page,
@@ -249,24 +249,27 @@ font-size:13px;
 	cursor: pointer;
 }
 #picsearch #listings-container #pagination-container ul#pagination li.page-no{
-	background-color: #039;
+	background-color: #ff5302;
 	color: #fff;
 	font-size: 14px;
 	display: none;
 }
 
 
+#picsearch span.category{
+	color: #959595;
+}
 #picsearch span.category.nyheter{
-	color: #006EC8;
+	color: #959595;
 }
 #picsearch span.category.sport{
-	color: #ff5f00;
+	color: #959595;
 }
 #picsearch span.category.kulturnoje{
-	color: #4F1756;
+	color: #959595;
 }
 #picsearch span.category.ovrigt{
-	color: #999;
+	color: #959595;
 }
 
 #picsearch #rating-widget{
@@ -275,7 +278,7 @@ font-size:13px;
 #picsearch #rating-widget .rating{
 	height: 18px;
 	cursor: pointer;
-	background-image: url(empty-star.gif);
+	background-image: url(empty-star.png);
 	background-position: top left;
 	background-repeat: no-repeat;
 	margin-left: 18px;
@@ -284,8 +287,8 @@ font-size:13px;
 	margin-left: 0;
 }
 #picsearch #rating-widget .rating-1:hover{
-	background-color: #f5f5f5;
+	background-color: #000;
 }
 #picsearch #rating-widget .rating:hover{
-	background-image: url(star.gif);
+	background-image: url(star.png);
 }

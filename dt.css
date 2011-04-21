@@ -1,0 +1,242 @@
+@charset "utf-8";
+/* CSS Document */
+
+#picsearch{
+	padding: 0 10px;
+	width: 620px;
+	overflow: hidden;
+}
+
+/* Search */
+
+#picsearch #search{
+
+}
+
+#picsearch #search #search_input{
+
+}
+
+#picsearch #search #search_input #search-textbox{
+	
+}
+
+#picsearch #search #search_input .search-btn{
+
+}
+
+#picsearch #search #search_msg_box{
+
+}
+
+/* Player */
+
+#picsearch #container{
+	
+}
+
+#picsearch #container .left-panel{
+
+}
+
+#picsearch #container .left-panel .player-frame{
+
+}
+
+#picsearch #container .left-panel .player-frame a#mediaplayer{
+
+}
+
+#picsearch #container .left-panel #metavideo {
+	
+}
+
+#picsearch #container .left-panel #metavideo h1 {
+	margin: 15px 0 0 0;
+	line-height: 1;
+	font-size: 230%;
+}
+
+#picsearch #container .left-panel #metavideo p.video-description {
+
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail{
+	overflow: hidden;
+	font-size: 80%;
+	background-color: #f5f5f5;
+	line-height: 30px;
+	height: 30px;
+	padding: 0 10px;
+	margin: 0 0 10px 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.video-length{
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.video-views{
+	float: left;
+	margin: 0 20px 0 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.video-rating{
+	float: left;
+	margin: 0 20px 0 0;
+	overflow: hidden;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.video-rating div.rating-text{
+	float: left;
+	margin: 0 10px 0 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.video-rating div.rating-img{
+	float: left;
+	margin: 5px 0 0 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.details-right{
+	float: left;
+	overflow: hidden;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.details-right img{
+	float: left;
+	margin: 3px 10px 0 0;
+}
+
+#picsearch #container .left-panel #metavideo div.video-detail div.details-right a{
+	float: left;
+}
+
+
+
+
+/* Video list */
+
+#picsearch .right-panel{
+	margin: 20px 0 0 0;
+}
+
+#picsearch .right-panel .tabbed-panel{
+
+}
+
+#picsearch .right-panel .tabbed-panel ul.tabs{
+	display: block;
+	overflow: hidden;
+	list-style: none;
+	background-color: #d7d7d7;
+	color: #000;
+	font-family: 'Lucida Sans', 'Lucida Grande', 'Lucida Sans Unicode', Lucida;
+	font-size: 12px;
+	font-weight: bold;
+	text-transform: uppercase;
+	line-height: 1;
+	border-bottom: 6px solid #B982C8;
+	margin: 0;
+}
+
+#picsearch .right-panel .tabbed-panel ul.tabs li.tab-heading, 
+#picsearch .right-panel .tabbed-panel ul.tabs li.tab-heading-selected{
+	display: block;
+	float: left;
+	margin: 0 2px 0 0;
+	width: auto;
+	padding: 7px 10px 5px 10px;
+}
+
+#picsearch .right-panel .tabbed-panel ul.tabs li.selected-tab{
+	background-color: #B982C8;
+	color: #fff;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content{
+	
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list{
+	overflow: hidden;
+	display: block;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container{
+	width: 124px;
+	float: left;
+	margin: 0 5px 5px 0;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a{
+	
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-image{
+	
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-details{
+	
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-details .video-list-heading{
+	margin: 0 0 10px 0;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-details p{
+	display: none;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-details span.video-list-detail{
+	font-size: 80%;
+	margin: 0 5px 0 0;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list .video-list-container a .video-list-details span.clearleft{
+	display: none;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination{
+	padding: 10px 0;
+	border-top: 6px solid #B982C8;
+	margin: 10px 0 0 0;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination ul{
+	list-style: none;
+	overflow: hidden;
+	display: block;
+	text-align: center;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination ul li{
+	margin: 0 10px 0 0;
+	display: inline-block;
+	background-color: #d7d7d7;
+	width: 25px;
+	height: 25px;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination ul li a{
+	float: left;
+	font-weight: bold;
+	font-size: 14px;
+	width: 25px;
+	height: 25px;
+	text-align: center;
+	line-height: 25px;
+	color: #fff;
+}
+
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination ul li a.pag-previous{
+
+}
+
+#picsearch .right-panel .tabbed-panel .tab-content #video-list-pagination ul li a.pag-next{
+}
+
