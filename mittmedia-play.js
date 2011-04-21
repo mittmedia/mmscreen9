@@ -20,7 +20,7 @@
  * + iPad
  *
  */
-var MittMediaPlay = new function(){
+var MittMediaPlay = (function(){
 
 	var player;
 	var config;
@@ -36,6 +36,8 @@ var MittMediaPlay = new function(){
 		document.observe("dom:loaded", function(){
 			navigation.init();
 		});
+		
+		debug("MittMediaPlay initialized");
 	}
 	
 	/* MediaNavigation represents the tabs and tabbed content
@@ -503,7 +505,7 @@ var MittMediaPlay = new function(){
 	}
 
 	return { init: init };
-}
+})();
 
 function debug(something){
 	if(typeof(console)!="undefined"){
