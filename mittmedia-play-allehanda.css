@@ -1,19 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
 
-/* Heha anpassning */
+/* Allehanda anpassning */
 
 
 /*----------------------*/
 
 #picsearch{
-	width: 448px;
+	margin-right: 5px;
 	overflow: hidden;
 	padding: 10px;
-	background-color:#1d1d1d;
+	background-color:#000;
 	color: #f0f0f0;
 	padding-top:10px;
-	font-family:Arial, Helvetica, sans-serif;
 }
 
 /* Player */
@@ -31,7 +30,7 @@
 	margin-top: 7px;
 	line-height: 1.5;
 	font-size: 230%;
-	font-family:Arial, Helvetica, sans-serif;}
+}
 #picsearch #player-container #player-meta p.description{
 	margin-bottom: 10px;
 	font-size:13px;
@@ -98,16 +97,14 @@
 #picsearch #listings-container ul#category-tabs{
 	display: block;
 	overflow: hidden;
-	border-bottom: 5px solid #ff5302;
+	border-bottom: 5px solid #ca0015;
 	background-color: transparent;
 	margin-bottom: 10px;
 }
 #picsearch #listings-container ul#category-tabs li{
-	color: #F50;
+	color: #fff;
 	
-	font-family:Arial, Helvetica, sans-serif;
-	text-transform: uppercase;
-	font-size: 11px;
+	font-size: 13px;
 	line-height: 2;
 	padding: 0 10px;
 	font-weight: bold;
@@ -117,14 +114,11 @@
 	cursor: pointer;
 }
 #picsearch #listings-container ul#category-tabs li:hover{
-	background-color: #000;
+	background-color: #333;
 	color: #fff;
 }
 #picsearch #listings-container ul#category-tabs li.current{
-	background-image: url(http://helahalsingland.se/img/heha/button_searchString.png);
-	background-repeat: repeat-x;
-	background-position: 0 -8px;
-	background-color: #ff5302;
+	background-color: #ca0015;
 	color: #fff;
 }
 #picsearch #listings-container #video-lists{
@@ -151,16 +145,16 @@
 	display: block;
 	overflow: hidden;
 	float: left;
-	width: 142px;
-	height: 137px;
-	margin: 0 0 11px 11px;
+	width: 175px;
+	height: 147px;
+	margin: 0 0 10px 14px;
 	cursor: pointer;
 }
 #picsearch #listings-container #video-lists .video-list .pos-0{
 	margin-left: 0;
 }
 #picsearch #listings-container #video-lists .video-list .video:hover{
-	background-color:#000;
+	background-color:#111;
 }
 #picsearch #listings-container #video-lists .video-list .video ul.attributes{
 	display: block;
@@ -181,22 +175,22 @@
 	text-align: right;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail{
-	width: 142px;
-	height: 79px;
+	width: 175px;
+	height: 98px;
 	overflow: hidden;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail img{
-	width: 142px;
+	width: 175px;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-description{
 
 }
 #picsearch #listings-container #video-lists .video-list .video .video-description div.heading{
-font-size:13px;
+	font-size:11px;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-description span.category{
 	font-weight: bold;
-	font-size:13px;
+	font-size:11px;
 }
 
 #picsearch #listings-container #video-lists .video-list .video .video-description p.length{
@@ -204,7 +198,7 @@ font-size:13px;
 }
 
 #picsearch #listings-container #pagination-container{
-	border-top: 5px solid #ff5302;
+	border-top: 5px solid #ca0015;
 	display: block;
 	padding: 10px 0;
 	overflow: hidden;
@@ -222,8 +216,8 @@ font-size:13px;
 	padding: 0 10px;
 	height: 25px;
 	text-align: center;
-	background-color:#ff5302;
-	color: #fff;
+	background-color:#ca0015;
+	color: #000;
 	border-radius: 5px;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
@@ -234,11 +228,11 @@ font-size:13px;
 }
 
 #picsearch #listings-container #pagination-container ul#pagination li:hover{
-	color: #000;
+	color: #fff;
 }
 
 #picsearch #listings-container #pagination-container ul#pagination li.disabled{
-	background-color: #000;
+	background-color: #333;
 	color: #1d1d1d;
 }
 
@@ -249,7 +243,7 @@ font-size:13px;
 	cursor: pointer;
 }
 #picsearch #listings-container #pagination-container ul#pagination li.page-no{
-	background-color: #ff5302;
+	background-color: #ca0015;
 	color: #fff;
 	font-size: 14px;
 	display: none;
