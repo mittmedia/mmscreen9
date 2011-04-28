@@ -89,8 +89,7 @@ var MittMediaPlay = (function(){
 		}
 		
 		/* Event callback that gets fired when a tab is clicked */
-		function select_tab(event){
-			var tab = $(event.target);
+		function select_tab(tab){
 			var tab_id = tab.readAttribute("rel");
 			var new_tab = tabs.down("[rel=\""+tab_id+"\"]");
 			if(new_tab){
@@ -98,7 +97,20 @@ var MittMediaPlay = (function(){
 				select_list(tab_id);
 			}
 		}
-		
+
+		function select_tab_by_title(title){
+			if(typeof(title) !== "undefined" && title && title != ""){
+				title = title.toLowerCase();
+				var matching_tab = tabs.childElements().detect(function(tab){
+					return tab.innerText.toLowerCase() == title;
+				});
+				if(matching_tab){
+					select_tab(matching_tab);
+				}
+			}
+		}
+
+
 		/* Selects a list, populates it with videos if not already done */
 		function select_list(list_id){
 			var new_list = video_lists.down("#list-"+list_id);
@@ -282,7 +294,7 @@ var MittMediaPlay = (function(){
 		function categoryListingResponse(data){
 			/* Insert virtual 'all clips' tab prior to actual categories */
 			var li = new Element("li", {rel: "alla"}).update("Alla klipp");
-			li.observe('click', select_tab);
+			li.observe('click', function(event){ select_tab($(event.target)) });
 			tabs.insert(li);
 			if(!config.category){
 				set_current_tab(li);
@@ -292,7 +304,7 @@ var MittMediaPlay = (function(){
 			/* Insert actual categories to tab list */
 			data.categories.reverse().each(function(category){
 				var li = new Element("li", {rel: category.categoryid}).update(category.categoryname);
-				li.observe('click', select_tab);
+				li.observe('click', function(event){ select_tab($(event.target)) });
 				tabs.insert(li);
 				if(category.categoryname === config.category){
 					set_current_tab(li);
@@ -319,7 +331,7 @@ var MittMediaPlay = (function(){
 			go_to_next_page.observe('click', next_page);
 		}
 
-		return { init: init, current_list: current_list };		
+		return { init: init, current_list: current_list, select_tab_by_title: select_tab_by_title };		
 	}
 	
 
@@ -381,14 +393,20 @@ var MittMediaPlay = (function(){
 		}
 		
 		/* Callback: mediaActivationListener(data)
-		Runs when media is activated (played) via Picsearch API call
-		Plays video clip		*/
+		Runs when media is activated (played) via Picsearch API call */
 		function mediaActivationListener(data){
+			var autoplay = false;
 			if (!data) { return false; }
-			if (location.hash == "")
-				var autoplay = false;
-			else
-				var autoplay = true;
+			if (location.hash.substr(1, location.hash.length) === data.mediaid){
+				// when the video id is found in location.hash (user came here via direct url to video), autoplay video
+				autoplay = true;
+			}
+			
+			if(autoplay){
+				// autonavigate to video's category, on autoplay, otherwise not
+				navigation.select_tab_by_title(data.categoryname);				
+			}
+			
 			player.mediaid = location.hash = data.mediaid;
 			var api_args = {mediaid: data.mediaid, containerId: picsearch_player_id, width: width, height: height, autoload: true, autoplay: autoplay, player: 'rutile'};
 			debug("API call: embed");
