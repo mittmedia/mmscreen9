@@ -102,7 +102,7 @@ var MittMediaPlay = (function(){
 			if(typeof(title) !== "undefined" && title && title != ""){
 				title = title.toLowerCase();
 				var matching_tab = tabs.childElements().detect(function(tab){
-					return tab.innerText.toLowerCase() == title;
+					return tab.innerHTML.toLowerCase() == title;
 				});
 				if(matching_tab){
 					select_tab(matching_tab);
@@ -270,7 +270,7 @@ var MittMediaPlay = (function(){
 					var row_pos = " pos-" + (i % row_size);
 					var video = new Element(video_template.tagName, {'rel': media.mediaid, 'class': video_template.className + row_pos}).update(content);
 					video.observe('click', function(){
-						player.play(this.readAttribute("rel"));
+						player.play(this.readAttribute("rel"), true);
 					});
 					page.insert(video);
 					set_current_page(page);
@@ -365,9 +365,12 @@ var MittMediaPlay = (function(){
 															}
 														};
 
-		function play(mediaid){
+		function play(mediaid, autoplay){
 			voter.hide();
 			debug("API call: activateMedia");
+			if(autoplay){
+				location.hash = mediaid;			
+			}
 			config.picsearch.activateMedia(mediaid);
 		}
 		
@@ -397,12 +400,13 @@ var MittMediaPlay = (function(){
 		function mediaActivationListener(data){
 			var autoplay = false;
 			if (!data) { return false; }
+
 			if (location.hash.substr(1, location.hash.length) === data.mediaid){
 				// when the video id is found in location.hash (user came here via direct url to video), autoplay video
 				autoplay = true;
 			}
 			
-			if(autoplay){
+			if(autoload && autoplay){
 				// autonavigate to video's category, on autoplay, otherwise not
 				navigation.select_tab_by_title(data.categoryname);				
 			}
