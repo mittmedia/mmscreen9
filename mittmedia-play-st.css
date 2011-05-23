@@ -4,8 +4,12 @@
 #picsearch{
 	padding: 10px;
 	background-color:#FFF;
-	padding-top:10px;
+	padding-top:50px;
 	font-family:Arial, Helvetica, sans-serif;
+
+	background-image: url(http://st.nu/img/suti/sttv-liten1.png);
+	background-position: 10px 10px;
+	background-repeat: no-repeat;
 }
 
 /* Player */
@@ -13,8 +17,10 @@
 #picsearch #player-container{
 	margin-bottom: 10px;
 }
-#picsearch #player-container #picsearch_player{
-
+#picsearch #player-container #picsearch-player{
+	background-image: url(http://st.nu/img/suti/sttv-laddar1.png);
+	background-position: center;
+	background-repeat: no-repeat;
 }
 #picsearch #player-container #player-meta{
 	border-bottom: 1px solid #d7d7d7;
