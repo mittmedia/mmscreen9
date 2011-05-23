@@ -2,7 +2,7 @@
 /* CSS Document */
 
 #picsearch{
-	padding-left: 10px;
+	padding-left: 0;
 }
 
 /* Player */
@@ -134,7 +134,7 @@
 	display: block;
 	overflow: hidden;
 	float: left;
-	width: 166px;
+	width: 162px;
 	height: 160px;
 	margin: 0 0 10px 10px;
 	cursor: pointer;
@@ -164,12 +164,12 @@
 	text-align: right;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail{
-	width: 166px;
+	width: 162px;
 	height: 92px;
 	overflow: hidden;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-thumbnail img{
-	width: 166px;
+	width: 162px;
 }
 #picsearch #listings-container #video-lists .video-list .video .video-description{
 

@@ -1,0 +1,69 @@
+div.picsearchTeasers{
+	overflow: hidden;
+}
+
+	div.picsearchTeasers div.picsearchTeaser{
+		overflow: hidden;	
+	}
+
+		div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+			width: 200px;
+			height: 112px;
+			overflow: hidden;
+		}
+		
+			div.picsearchTeasers div.picsearchTeaser div.imageTeaser a{
+		
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+					width: 200px;
+				}
+		
+		div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+		
+		}
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser h3{
+			
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser h3 a{
+			
+				}
+
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText{
+			
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText a{
+				
+				}
+
+					div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText p{
+					
+					}
+
+
+div.mainColumn div.picsearchTeasers div.picsearchTeaser{
+	width: 230px;
+	float: left;
+	margin-left: 8px;
+}
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser:first-child{
+		margin-left: 0;
+	}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+		width: 230px;
+		height: 131px;
+	}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+		width: 230px;
+	}
+
+div.mainColumn div.picsearchTeasers div.teaser-3{
+	display: none;
+}

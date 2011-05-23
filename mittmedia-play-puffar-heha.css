@@ -1,0 +1,105 @@
+div.picsearchTeasers{
+	overflow: hidden;
+	background-color: #000;
+	color: #fff;
+	padding: 4px 4px 0;
+	margin-bottom: 10px;
+}
+
+	div.picsearchTeasers div.picsearchTeaser{
+		overflow: hidden;
+		width: 142px;
+		margin-bottom: 10px;
+	}
+
+		div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+			width: 50px;
+			overflow: hidden;
+			float: left;
+		}
+		
+			div.picsearchTeasers div.picsearchTeaser div.imageTeaser a{
+		
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+					width: 50px;
+				}
+		
+		div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+			padding: 3px 0 0 5px;
+			float: left;
+			width: 86px;
+		}
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser h3{
+				font-size: 11px;
+				line-height: 1.0;
+				font-weight: bold;
+				font-family: arial, sans-serif;
+				margin-bottom: 3px;
+			}
+			
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser h3 span{
+					color: #f50;
+					margin-right: 3px;
+				}
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser h3 a{
+					text-decoration: none;
+					color: #fff;
+				}
+
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText{
+				display: none;
+				font: normal 11px/1.2 Arial,sans-serif;
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText a{
+					text-decoration: none;
+					color: #fff;
+				}
+
+					div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText p{
+					
+					}
+
+div.extraColumn div.picsearchTeaser.teaser-1, div.extraColumn div.picsearchTeaser.teaser-2,
+div.navColumn div.picsearchTeaser.teaser-1, div.navColumn div.picsearchTeaser.teaser-2{
+	border-bottom: 1px solid #f50;
+	padding-bottom: 4px;
+}
+
+div.mainColumn div.picsearchTeasers div.picsearchTeaser{
+	float: left;
+	margin-left: 8px;
+	width: 148px;
+}
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser:first-child{
+		margin-left: 0;
+	}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+		width: 143px;
+		height: 70px;
+			
+		border: 2px solid #fff;
+		border-radius: 5px;
+		
+		float: none;
+}
+	
+		div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+			width: 140px;
+		}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+		width: 100%;
+		height: 40px;
+		padding: 5px 0 0 0;
+		float: none;
+	}
+		div.mainColumn div.picsearchTeasers div.picsearchTeaser div.textTeaser h3{
+			font-size: 14px;
+		}
