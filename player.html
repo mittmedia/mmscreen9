@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script type="text/javascript" src="lib/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="http://csp.screen9.com/js/ps.js"></script>
+  </head>
+  <body>
+
+    <script type="text/javascript">picsearch_ajax_auth="N9hE9WSw4O_1_S-1mqVGrKXxpBEJx2irL2WIONfeClnRJdXpTdMj0w"</script>
+    <script type="text/javascript" src="build/mmscreen9.js"></script>
+    <link rel="stylesheet" href="build/base.css" />
+
+    <div id="picsearch">
+      <div id="player-container">
+        <div id="picsearch-player" style="width:694px; height:390px;"></div>
+        <div id="player-meta"></div>
+        <div id="player-meta-template" style="display:none;">
+          <div class="heading">#{title}</div>
+          <p class="description"><span class="category #{categoryclass}">#{categoryname}</span> #{description}</p>
+          <dl>
+            <dt>Längd</dt>
+            <dd>#{length}</dd>
+            <dt>Visningar</dt>
+            <dd>#{views}</dd>
+            <dt>Betyg</dt>
+            <dd class="rating #{ratingclass}"></dd>
+          </dl>
+        </div>
+      </div>
+      <div id="listings-container">
+        <h3>Senaste webb-tv-klippen</h3>
+        <ul id="category-tabs">
+        </ul>
+        <div id="video-lists"></div>
+        <div id="template-container" style="display:none;">
+          <div class="video">
+            <div class="video-thumbnail">#{thumbnail}</div>
+            <div class="video-description">
+              <ul class="attributes">
+                <li class="date">#{date}</li>
+                <li class="length">#{length}</li>
+              </ul>
+              <div class="heading"><span class="category #{categoryclass}">#{categoryname}</span> #{title}</div>
+            </div>
+          </div>
+        </div>
+        <div id="pagination-container">
+          <ul id="pagination">
+            <li class="prev-page disabled">&laquo;</li>
+            <li class="page-no">1</li>
+            <li class="next-page disabled">&raquo;</li>
+          </ul>
+        </div>
+      </div>
+      <div id="rating-widget" style="display:none;">
+        <div class="rating rating-1">
+          <div class="rating rating-2">
+            <div class="rating rating-3">
+              <div class="rating rating-4">
+                <div class="rating rating-5"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var config = { 'picsearch': ps };
+      window.MMScreen9.init(config);
+    </script>
+  </body>
+</html>
+
