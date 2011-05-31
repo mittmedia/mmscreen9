@@ -1,0 +1,99 @@
+div.picsearchTeasers{
+	overflow: hidden;
+  padding: 7px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}
+
+	div.picsearchTeasers div.picsearchTeaser{
+		overflow: hidden;	
+	}
+
+		div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+			width: 200px;
+			height: 112px;
+			overflow: hidden;
+		}
+		
+			div.picsearchTeasers div.picsearchTeaser div.imageTeaser a{
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+					width: 200px;
+				}
+		
+		div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+
+		}
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser h3{
+			
+			}
+			
+			  div.picsearchTeasers div.picsearchTeaser div.textTeaser h3 span{
+			    color: #ED8522;
+			    margin-right: 4px;
+		    }
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser h3 a{
+			    text-decoration: none;
+				}
+
+
+			div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText{
+			
+			}
+
+				div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText a{
+				  text-decoration: none;
+				}
+
+					div.picsearchTeasers div.picsearchTeaser div.textTeaser div.richText p{
+					
+					}
+
+div.mainColumn div.picsearchTeasers div.picsearchTeaser{
+	width: 230px;
+	float: left;
+	margin-left: 8px;
+}
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser:first-child{
+		margin-left: 0;
+	}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+		width: 230px;
+		height: 131px;
+	}
+	
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+		width: 230px;
+	}
+
+	div.mainColumn div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+    margin-top: 5px;	  
+	}	
+
+div.mainColumn div.picsearchTeasers div.teaser-3{
+	display: none;
+}
+
+div.extraColumn div.picsearchTeasers div.picsearchTeaser{
+  margin-bottom: 7px;
+}
+	
+	div.extraColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser{
+		width: 130px;
+		height: 70px;
+    margin-right: 7px;
+    float: left;
+	}
+	
+	div.extraColumn div.picsearchTeasers div.picsearchTeaser div.imageTeaser a img{
+		width: 130px;
+	}
+	
+	div.extraColumn div.picsearchTeasers div.picsearchTeaser div.textTeaser{
+	  width: 140px;
+	  float: left;
+	}
