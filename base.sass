@@ -59,15 +59,20 @@
           &.tags
             span.tag
               display: inline-block
-              padding: 2px 4px
+              padding: 1px 4px
               margin-right: 2px
               font-family: arial, sans-serif
               font-size: 11px
               line-height: 11px
               background-color: #333
+              border: 2px solid #333
               color: #fff
-              border-radius: 3px
+              border-radius: 5px
               cursor: pointer
+              &.current
+                border: 2px solid #333
+                background-color: #fff
+                color: #333
               
 
 
@@ -154,12 +159,12 @@
 
   #search-results-container
     display: none
+    overflow: hidden
     .search-result
       h3
         margin: 0 0 5px 0
-      padding: 10px 0
+      padding: 10px 0 0 0
       @extend #picsearch-video-list
-      
 
   #rating-widget
     width: 90px

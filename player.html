@@ -29,12 +29,14 @@
             <dd>#{length}</dd>
             <dt>Visningar</dt>
             <dd>#{views}</dd>
-            <dt>Ämne</dt>
-            <dd class="tags">#{tags}</dd>
             <dt>Betyg</dt>
             <dd class="rating #{ratingclass}"></dd>
+            <dt class="tags-heading">Mer om</dt>
+            <dd class="tags">#{tags}</dd>
           </dl>
         </div>
+      </div>
+      <div id="search-results-container">
       </div>
       <div id="listings-container">
         <h3>Senaste webb-tv-klippen</h3>
@@ -74,7 +76,7 @@
       </div>
     </div>
     <script type="text/javascript">
-      var config = { 'picsearch': ps };
+      var config = { 'picsearch': ps, 'include_tag': 'GD', 'exclude_tag': 'AB' };
       window.MMScreen9.init(config);
     </script>
   </body>

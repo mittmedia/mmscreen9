@@ -10,14 +10,19 @@ MMScreen9 =
     jQuery =>
       @player.init(this)
       @navigation.init(this)
+      @search.init(this)
     mmdebug "MMScreen9 initialized"
+
+  htmlify: (string) ->
+    string.toLowerCase().replace(/-/, "_").replace(/[\u00f6]/g, "o").replace(/[\u00e4\u00e5]/g, "a").replace(/\W+/g, '')
 
   # Player object.
   # Handles playback of and meta information for videos.
   player:
-    init: (root) ->
-      @config               = root.config
-      @navigation           = root.navigation
+    init: (@root) ->
+      @config               = @root.config
+      @navigation           = @root.navigation
+      @search               = @root.search
       @picsearch_player_id  = @config.picsearch_player_id or "picsearch-player"
       @player_meta          = jQuery @config.player_meta or "#player-meta"
       @player_meta_template = jQuery @config.player_meta_template or "#player-meta-template"
@@ -44,10 +49,13 @@ MMScreen9 =
       views: (media) ->
         media.downloads_started.toString()
       # HTML-friendly version of category name
-      categoryclass: (media) ->
-        media.categoryname.toLowerCase().replace(/-/, "_").replace(/[\u00f6]/g, "o").replace(/[\u00e4\u00e5]/g, "a").replace(/\W+/g, '')
-      ratingclass: (media, player) =>
-        "rating-" + player.voter.rating_to_stars(parseInt(media.rating))
+      categoryclass: (media, root) ->
+        root.htmlify media.categoryname
+      ratingclass: (media, root) =>
+        "rating-" + root.player.voter.rating_to_stars(parseInt(media.rating))
+      tags: (media, root) ->
+        filtered_tags = jQuery.grep(media.tags, (tag) => tag != root.player.config.exclude_tag && tag != root.player.config.include_tag)
+        jQuery.map(filtered_tags, (tag) => "<span class=\"tag\">#{tag}</span>").join("")
 
     # Callback function that runs when a video has been activated
     media_activated: (media) ->
@@ -85,10 +93,23 @@ MMScreen9 =
       content = @player_meta_template.html().replace /#{(\w+)}/g, (match...) =>
         formatter = @field_formatters[match[1]]
         if formatter?
-          formatter(media, this)
+          formatter(media, @root)
         else
           media[match[1]]
       @player_meta.html content
+      tags = @player_meta.find("dd.tags span.tag")
+      if tags.length
+        tags.each (index, tag) =>
+          jQuery(tag).click =>
+            @search.toggle_tag tag
+      else
+        @player_meta.find("dt.tags-heading").hide()
+        @player_meta.find("dd.tags").hide()
+    
+    show_related: (tag) ->
+      search_id = @root.htmlify "tag-#{tag}"
+      description = "Relaterade klipp: #{tag}"
+      @search.send_query( description, search_id, { count: 4, filters: { tags: [tag] }, order: 'downloads' } )
     
     # Smoothly scrolls video into view, if out of view
     scroll_into_view: ->
@@ -113,7 +134,7 @@ MMScreen9 =
     # Updates URL with hash fragment and displays voting widget
     media_loaded: (media) ->
       location.hash = @mediaid
-      @voter.show()
+      setTimeout((=> @voter.show()), 500)
     
     # Callback function that runs when video playback fails.
     # This has never happened. Not sure how to handle.
@@ -162,9 +183,9 @@ MMScreen9 =
   # Navigation object.
   # Represents category tabs, video catalogue, pagination
   navigation:
-    init: (root) ->
-      @config             = root.config
-      @player             = root.player
+    init: (@root) ->
+      @config             = @root.config
+      @player             = @root.player
       @tabs               = jQuery @config.category_tabs or "#category-tabs"
       @video_lists        = jQuery @config.video_lists or "#video-lists"
       @template_container = jQuery @config.template_container or "#template-container"
@@ -295,13 +316,13 @@ MMScreen9 =
       rel = "alla"
       if options.categoryid? and options.categoryid != "alla"
         rel = filters.categoryid = options.categoryid
-      if @config.tag_filter?
-        filters.tag_filter = @config.tag_filter
+      if @config.include_tag?
+        filters.tag_filter = @config.include_tag
       page_no = options.page_no
       animate = options.animate
       page_start = (page_no * @page_size) - @page_size + 1
       [list, page] = @setup_video_page rel, page_no
-      @render_videos(list, page, page_start, animate, filters)
+      @request_videos(list, page, page_start, animate, filters)
     
     # Create video list and pagination
     setup_video_page: (rel, page_no) ->
@@ -313,31 +334,41 @@ MMScreen9 =
       page = list.find(".page-#{page_no}")
       [list, page]
     
-    # Requests and renders videos from Screen9
-    render_videos: (list, page, page_start, animate, filters) ->
-      mmdebug "Rendering video page: #{page.selector}"
+    # Requests videos from Screen9
+    request_videos: (list, page, page_start, animate, filters) ->
+      mmdebug "Fetching video page: #{page.selector}"
       api_args = { start: page_start, count: @page_size, fields: @fields, filters: filters }
       # Uses html structure as template for what stuff to put where,
       # replaces placeholders with meta-information received.
       video_template = @template_container.find(".video")[0]
       @config.picsearch.listMedia api_args, (response) => 
-        for media in response.media
-          row_pos = " pos-#{_i % @row_size}"
-          content = video_template.innerHTML.replace /#{(\w+)}/g, (match...) =>
-            formatter = @field_formatters[match[1]]
-            if formatter?
-              formatter(media)
-            else
-              media[match[1]]
-          video = jQuery("<div rel=\"#{media.mediaid}\" class=\"#{video_template.className}#{row_pos}\"></div>").html(content)
-          video.click => 
-            @player.play video.attr("rel"), true
-          page.append(video)
+        @render_videos response.media, video_template, @row_size, @field_formatters, page, (video) => @root.search.hide_results_pane()
         @set_current_list list
         @set_current_page page
         @animate_videos page if animate
         @player.autoload_video() if @player.autoload_first
-		
+      return
+      
+    # Renders video from template and inserts into container
+    render_videos: (video_list, video_template, row_size, formatters, container, click_callback) ->
+      for media in video_list
+        row_pos = " pos-#{_i % row_size}"
+        content = video_template.innerHTML.replace /#{(\w+)}/g, (match...) =>
+          formatter = formatters[match[1]]
+          if formatter?
+            formatter(media, @root)
+          else
+            media[match[1]]
+        video = jQuery("<div rel=\"#{media.mediaid}\" class=\"#{video_template.className}#{row_pos}\">#{content}</div>")
+        # save reference to video in local anonymous function,
+        # otherwise any click will result in click on last video of the container
+        ((video) => 
+          video.click => 
+            @player.play video.attr("rel"), true
+            click_callback?(video)
+        )(video)
+        container.append(video)
+        
 		# Fades in videos _sequentially_ for a smooth effect
     animate_videos: (page) ->
       @video_lists.css("min-height", "#{page.height()}px")
@@ -353,10 +384,76 @@ MMScreen9 =
         duration.minutes.toString() + "." + ("0" + duration.seconds.toString()).substr(-2, 2) + "min"
       date: (media) ->
         media.posted.substr(0,10)
-      categoryclass: (media) ->
-        media.categoryname.toLowerCase().replace(/-/, "_").replace(/[\u00f6]/g, "o").replace(/[\u00e4\u00e5]/g, "a").replace(/\W+/g, '')
+      categoryclass: (media, root) ->
+        root.htmlify media.categoryname
       thumbnail: (media) ->
         "<img src=\"#{media.thumbnail}\" />"
+  
+  # Search object.
+  # Represents querying and displaying search results.
+  search:
+    init: (@root) ->
+      @config                   = @root.config
+      @player                   = @root.player
+      @navigation               = @root.navigation
+      @search_results_container = jQuery @config.search_results_container || "#search-results-container"
+
+    current_tag: ->
+      @player.player_meta.find "dd.tags span.current"
+    
+    toggle_tag: (tag) ->
+      current_tag = @current_tag()
+      if current_tag[0] == tag
+        @hide_results_pane()
+        @no_current_result()
+        @no_current_tag()
+      else
+        @set_current_tag jQuery tag
+        @player.show_related tag.innerText
+      
+    set_current_tag: (tag) ->
+      tag.addClass "current"
+      tag.siblings().removeClass "current"
+
+    no_current_tag: ->
+      @current_tag().removeClass "current"
+
+    current_result: ->
+      @search_results_container.find ".search-result.current"
+
+    set_current_result: (result_list) ->
+      result_list.addClass "current"
+      result_list.siblings().removeClass "current"
+    
+    no_current_result: ->
+      result = @current_result
+      if result.length
+        result.removeClass "current"
+    
+    hide_results_pane: ->
+      @search_results_container.fadeOut()
+    
+    show_results_pane: (results_list) ->
+      @search_results_container.css("min-height", "#{@search_results_container.height()}px")
+      @no_current_result()
+      @search_results_container.fadeIn()
+      @set_current_result results_list
+      @navigation.animate_videos results_list
+
+    send_query: (description, search_id, api_args) ->
+      api_args.fields = @navigation.fields
+      video_template = @navigation.template_container.find(".video")[0]
+      results_list = @search_results_container.find(".search-result[rel=\"#{search_id}\"]")
+      if not results_list.length
+        @search_results_container.append("<div class=\"search-result\" rel=\"#{search_id}\"></div>")
+        results_list = @search_results_container.find(".search-result[rel=\"#{search_id}\"]")
+        results_list.append("<h3>#{description}</h3>")
+        console.log "Fetching videos: #{search_id}"
+        @config.picsearch.listMedia api_args, (response) => 
+          @navigation.render_videos response.media, video_template, @navigation.row_size, @navigation.field_formatters, results_list
+          @show_results_pane(results_list)
+      else
+        @show_results_pane(results_list)
     
 mmdebug = (thing) ->
   console.log thing if console and console.log
