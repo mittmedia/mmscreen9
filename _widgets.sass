@@ -1,0 +1,63 @@
+#picsearch-video-list
+  display: none
+  overflow: hidden
+  position: relative
+  &.current
+    display: block
+
+  .page
+    display: none
+    overflow: hidden
+    &.current
+      display: block
+
+  .video
+    font-size: 14px
+    font-family: sans-serif
+    display: block
+    overflow: hidden
+    float: left
+    width: 162px
+    height: 160px
+    margin: 0 0 10px 10px
+    cursor: pointer
+    &.pos-0
+      margin-left: 0
+    &:hover
+      background-color: #fffff0
+
+    ul.attributes
+      margin: 0
+      padding: 0
+      list-style: none
+      display: block
+      overflow: hidden
+      font-size: 11px
+      color: #666
+      line-height: 1
+      padding: 5px 0
+
+      li
+        float: left
+        width: 50%
+
+        &.date
+
+        &.length
+          text-align: right
+
+    .video-thumbnail
+      width: 162px
+      height: 92px
+      overflow: hidden
+
+      img
+        width: 162px
+
+    .video-description
+
+      div.heading
+      span.category
+        font-weight: bold
+        text-transform: uppercase
+      p.length

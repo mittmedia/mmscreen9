@@ -1,3 +1,5 @@
+@import widgets
+
 #picsearch
   padding-left: 0
   width: 678px
@@ -41,14 +43,32 @@
             width: 90px
           &.rating-1
             width: 18px
+            margin-right: 92px
           &.rating-2
             width: 36px
+            margin-right: 74px
           &.rating-3
             width: 54px
+            margin-right: 56px
           &.rating-4
             width: 72px
+            margin-right: 38px
           &.rating-5
             width: 90px
+            margin-right: 20px
+          &.tags
+            span.tag
+              display: inline-block
+              padding: 2px 4px
+              margin-right: 2px
+              font-family: arial, sans-serif
+              font-size: 11px
+              line-height: 11px
+              background-color: #333
+              color: #fff
+              border-radius: 3px
+              cursor: pointer
+              
 
 
   #listings-container
@@ -88,70 +108,8 @@
           color: #fff
 
   #video-lists
-  
     .video-list
-      display: none
-      overflow: hidden
-      position: relative
-      &.current
-        display: block
-
-      .page
-        display: none
-        overflow: hidden
-        &.current
-          display: block
-
-      .video
-        font-size: 14px
-        font-family: sans-serif
-        display: block
-        overflow: hidden
-        float: left
-        width: 162px
-        height: 160px
-        margin: 0 0 10px 10px
-        cursor: pointer
-        &.pos-0
-          margin-left: 0
-        &:hover
-          background-color: #fffff0
-
-        ul.attributes
-          margin: 0
-          padding: 0
-          list-style: none
-          display: block
-          overflow: hidden
-          font-size: 11px
-          color: #666
-          line-height: 1
-          padding: 5px 0
-
-          li
-            float: left
-            width: 50%
-
-            &.date
-
-            &.length
-              text-align: right
-
-        .video-thumbnail
-          width: 162px
-          height: 92px
-          overflow: hidden
-
-          img
-            width: 162px
-
-        .video-description
-
-          div.heading
-          span.category
-            font-weight: bold
-            text-transform: uppercase
-          p.length
+      @extend #picsearch-video-list
 
   #pagination-container
     border-top: 5px solid #B982C8
@@ -193,6 +151,15 @@
           background-color: #B982C8
           color: #fff
           font-size: 14px
+
+  #search-results-container
+    display: none
+    .search-result
+      h3
+        margin: 0 0 5px 0
+      padding: 10px 0
+      @extend #picsearch-video-list
+      
 
   #rating-widget
     width: 90px
