@@ -192,8 +192,8 @@ MMScreen9 =
       @video_lists        = jQuery @config.video_lists or "#video-lists"
       @template_container = jQuery @config.template_container or "#template-container"
       @pagination         = jQuery @config.pagination or "#pagination"
-      @page_size          = config.page_size or 12
       @row_size           = config.row_size or 4
+      @page_size          = config.page_size or @row_size * 4
       
       @fields             = ["mediaid", "title", "description", "categoryname", "duration", "thumbnail", "posted"]
       
@@ -260,7 +260,7 @@ MMScreen9 =
       next_page = @pagination.find(".next-page").addClass "disabled"
       if @has_previous_page()
         prev_page.removeClass "disabled"
-      if @has_next_page
+      if @has_next_page()
         next_page.removeClass "disabled"
 
      has_previous_page: ->

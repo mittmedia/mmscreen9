@@ -1,0 +1,37 @@
+#listings-container
+  margin-top: 10px
+
+  h3
+    color: $tabs-heading-color
+    font: $tabs-heading-font
+    margin: 20px 0 10px 0
+    
+  ul#category-tabs
+    margin: 0
+    padding: 0
+    list-style: none
+    display: block
+    overflow: hidden
+    border-bottom: 3px solid $tabs-border-color
+    background-color: $tabs-backdrop-color
+    margin-bottom: 10px
+    li
+      color: $tabs-color
+      font: $tabs-font
+      background-color: $tabs-background-color
+      margin: $tabs-margin
+      padding: $tabs-padding
+      text-transform: uppercase
+      font-weight: bold
+      display: block
+      float: left
+      cursor: pointer
+      &:hover
+        background-color: $tabs-hover-background-color
+      &.current
+        background-color: $tabs-current-background-color
+        color: $tabs-current-color
+
+  #video-lists
+    .video-list
+      @extend #picsearch-video-list

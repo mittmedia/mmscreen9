@@ -1,0 +1,39 @@
+#pagination-container
+  border-top: 5px solid $pagination-main-color
+  display: block
+  text-align: center
+  padding: 10px
+
+  ul#pagination
+    display: inline-block
+    overflow: hidden
+    width: 120px
+    li
+      display: block
+      float: left
+      text-align: center
+      background-color: $pagination-button-color
+      color: $pagination-font-color
+      border-radius: 5px
+      -webkit-border-radius: 5px
+      -moz-border-radius: 5px
+      height: $pagination-height
+      padding: $pagination-padding
+      margin: $pagination-margin
+      font: $pagination-font
+      overflow: hidden
+      margin: 0 5px
+      &:hover
+        background-color: $pagination-hover-button-color
+      &.prev-page,
+      &.next-page
+        font-size: 18px
+        line-height: 20px
+        cursor: pointer
+      &.page-no
+        background-color: $pagination-main-color
+        font-size: 14px
+      &.disabled
+        background-color: $pagination-disabled-background-color
+        color: $pagination-disabled-color
+        cursor: auto !important

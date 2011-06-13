@@ -12,19 +12,26 @@
       display: block
 
   .video
+    $gap-size: floor(($container-width - ($video-thumbnail-width * $video-listings-row-size)) / ($video-listings-row-size - 1))
+
+    $video-thumbnail-margin-left: $gap-size !default
+    $video-thumbnail-margin-bottom: $gap-size !default
+
     font-size: 14px
     font-family: sans-serif
     display: block
     overflow: hidden
     float: left
-    width: 162px
-    height: 160px
-    margin: 0 0 10px 10px
+    width: $video-thumbnail-width
+    height: $video-thumbnail-height + $video-thumbnail-info-height
+    margin: 0 0 $video-thumbnail-margin-bottom $video-thumbnail-margin-left
+
+    
     cursor: pointer
     &.pos-0
       margin-left: 0
     &:hover
-      background-color: #fffff0
+      background-color: $video-thumbnail-hover-color
 
     ul.attributes
       margin: 0
@@ -33,7 +40,7 @@
       display: block
       overflow: hidden
       font-size: 11px
-      color: #666
+      color: $player-meta-color
       line-height: 1
       padding: 5px 0
 
@@ -47,12 +54,12 @@
           text-align: right
 
     .video-thumbnail
-      width: 162px
-      height: 92px
+      width: $video-thumbnail-width
+      height: $video-thumbnail-height
       overflow: hidden
 
       img
-        width: 162px
+        width: $video-thumbnail-width
 
     .video-description
 
