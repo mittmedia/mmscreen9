@@ -31,7 +31,7 @@ MMScreen9 =
       @autoload_url         = location.hash isnt ""
       @ratio                = @config.ratio or (16/9)
       @screen               = jQuery("##{@picsearch_player_id}")
-      @width                = @screen.width
+      @width                = @screen.width()
       @height               = Math.round(@width * 1/@ratio)
       @fields               = ["mediaid", "title", "description", "categoryname", "duration", "rating", "downloads_started", "tags"]
 
@@ -134,7 +134,7 @@ MMScreen9 =
     # Updates URL with hash fragment and displays voting widget
     media_loaded: (media) ->
       location.hash = @mediaid
-      setTimeout((=> @voter.show()), 500)
+      @voter.show()
     
     # Callback function that runs when video playback fails.
     # This has never happened. Not sure how to handle.
@@ -167,10 +167,12 @@ MMScreen9 =
         @config.picsearch.assignRating(@player.mediaid, {rating: value})
       show: ->
         # Position the voting widget directly on top of the currently playing video's rating.
-        @media_rating = @player.player_meta.find(".rating")
-        offset = @media_rating.offset()
-        @rating_widget.css { position: 'absolute', top: "#{offset.top}px", left: "#{offset.left}px" }
-        @rating_widget.show()
+        setTimeout((=>
+          @media_rating = @player.player_meta.find("#player-meta-rating")
+          rating_position = @media_rating.position()
+          @rating_widget.css { position: 'absolute', top: "#{rating_position.top}px", left: "#{rating_position.left}px", 'z-index': 100 }
+          @rating_widget.fadeIn()
+        ), 500)
       hide: ->
         @rating_widget.hide()
       # Convert voteing scale from 0-100 to 1-5.
