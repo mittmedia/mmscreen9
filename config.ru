@@ -2,7 +2,7 @@ class Server
   @@mime_types = { :txt => 'text/plain', :js => 'application/x-javascript', :css => 'text/css' }
   
   def call(env)
-    file = file_name env["REQUEST_PATH"]
+    file = file_name env["PATH_INFO"]
     if File.exists? file
       [200, { 'Content-Type' => mime_type_for_file(file) }, [ File.read(file) ] ]
     else
