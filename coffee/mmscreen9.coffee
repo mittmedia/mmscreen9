@@ -146,6 +146,7 @@ MMScreen9 =
     voter:
       init: (@config, @player) ->
         @rating_widget = jQuery @config.rating_widget or "#rating-widget"
+        @player_meta_rating_id = @config.player_meta_rating_id or "player-meta-rating"
         @hide()
         rating_html = '''<div class="rating rating-1">
                           <div class="rating rating-2">
@@ -168,7 +169,7 @@ MMScreen9 =
       show: ->
         # Position the voting widget directly on top of the currently playing video's rating.
         setTimeout((=>
-          @media_rating = @player.player_meta.find("#player-meta-rating")
+          @media_rating = @player.player_meta.find("##{@player_meta_rating_id}")
           rating_position = @media_rating.position()
           @rating_widget.css { position: 'absolute', top: "#{rating_position.top}px", left: "#{rating_position.left}px", 'z-index': 100 }
           @rating_widget.fadeIn()
