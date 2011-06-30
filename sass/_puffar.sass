@@ -1,0 +1,39 @@
+@mixin video-thumbnails($image-width, $image-height)
+  .picsearchTeaser
+    .imageTeaser
+      width: $image-width
+      height: $image-height
+      overflow: hidden
+      a
+        img
+          width: $image-width
+          display: block
+
+@mixin video-grid($grid-width, $horizontal-gap-size, $vertical-gap-size)
+  overflow: hidden
+  .picsearchTeaser
+    width: $grid-width
+    float: left
+    margin: 0 0 $vertical-gap-size $horizontal-gap-size
+    &.teaser-1
+      margin-left: 0
+
+@mixin wide-teaser($container-width, $image-width, $gap-size)
+  $textteaser-width: $container-width - $image-width - $gap-size
+  div.picsearchTeaser
+    overflow: hidden
+    div.imageTeaser
+      float: left
+      width: $image-width
+      margin-right: $gap-size
+    div.textTeaser
+      float: left
+      width: $textteaser-width
+
+@mixin undecorated-links
+  div.picsearchTeaser
+    div.textTeaser
+      a
+        text-decoration: none
+        &:hover
+          text-decoration: underline

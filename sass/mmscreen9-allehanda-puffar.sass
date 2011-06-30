@@ -1,0 +1,73 @@
+@import puffar
+
+$image-ratio: 16/9
+
+// Shared attributes between columns
+@mixin shared
+  padding: 5px
+  background-color: #000
+  color: #fff
+  div.picsearchTeaser
+    div.textTeaser
+      h3
+        padding: 0
+        font-size: 13px
+        span
+          margin-right: 5px
+        a
+          color: #fff
+    div.richText
+      padding-left: 0
+      font-size: 11px
+      line-height: 1.2
+      a
+        color: #999
+        p
+          line-height: 1.2
+//-----------------------------------------------------
+
+// Maincolumn
+$maincolumn-width:458px
+
+$maincolumn-image-width: 150px
+$maincolumn-image-height: floor($maincolumn-image-width / $image-ratio)
+
+$maincolumn-grid-width: $maincolumn-image-width
+$maincolumn-horizontal-gap-size: floor(($maincolumn-width - ($maincolumn-grid-width * 3)) / 2)
+$maincolumn-vertical-gap-size: 0
+//-----------------------------------------------------
+
+div.mainColumn div.picsearchTeasers
+  @include video-thumbnails($maincolumn-image-width, $maincolumn-image-height)
+  @include video-grid($maincolumn-grid-width, $maincolumn-horizontal-gap-size, $maincolumn-vertical-gap-size)
+  @include undecorated-links
+  @include shared
+
+// Sidecolumn
+$sidecolumn-width: 270px
+
+$sidecolumn-image-width: 120px
+$sidecolumn-image-height: floor($sidecolumn-image-width / $image-ratio)
+
+$sidecolumn-grid-width: $sidecolumn-width
+$sidecolumn-horizontal-gap-size: 0
+$sidecolumn-vertical-gap-size: 8px
+
+$sidecolumn-wide-teaser-gap-size: 12px
+//-----------------------------------------------------
+
+div.extraColumn div.picsearchTeasers
+  @include video-thumbnails($sidecolumn-image-width, $sidecolumn-image-height)
+  @include video-grid($sidecolumn-grid-width, $sidecolumn-horizontal-gap-size, $sidecolumn-vertical-gap-size)
+  @include undecorated-links
+  @include wide-teaser($sidecolumn-grid-width, $sidecolumn-image-width, $sidecolumn-wide-teaser-gap-size)
+  @include shared
+  
+div.picsearchteaser-header
+  background-color: #000
+  padding: 5px 5px 0 5px
+  h3
+    font-size: 14px
+    font-weight: bold
+    color: #fff
+    border-bottom: 1px solid #c00
