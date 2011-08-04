@@ -31,7 +31,7 @@ Anpassning
 För att anpassa spelaren för ny sajt:
 
 * Kör bygg-scriptet `cake watch` för att övervaka Coffeescripten och SASS-koden och generera JavaScript och CSS.
-* Se `player.html` för källkod som ska kopieras till ny sajt.
+* Se `index.html` för källkod som ska kopieras till ny sajt.
 * Katalogen `lib` innehåller tredjepartskod som krävs för att denna implementation ska fungera (dependencies).
 
 Funktionalitet
